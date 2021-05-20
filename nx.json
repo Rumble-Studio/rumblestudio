@@ -31,6 +31,13 @@
 		},
 		"player-service": {
 			"tags": []
+		},
+		"demo-player-angular-deezer": {
+			"tags": []
+		},
+		"demo-player-angular-deezer-e2e": {
+			"tags": [],
+			"implicitDependencies": ["demo-player-angular-deezer"]
 		}
 	}
 }
