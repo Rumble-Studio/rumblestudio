@@ -9,7 +9,6 @@ import { ControlComponent } from './control/control.component';
 import { LoadDialogComponent } from './load-dialog/load-dialog.component';
 import {
 	MAT_DIALOG_DATA,
-	MatDialogClose,
 	MatDialogModule,
 	MatDialogRef,
 } from '@angular/material/dialog';
@@ -25,11 +24,11 @@ import {
 
 @NgModule({
 	declarations: [
+		LoadDialogComponent,
+		SpotifyComponent,
 		PlaylistComponent,
 		PlaylistItemComponent,
 		ControlComponent,
-		LoadDialogComponent,
-		SpotifyComponent,
 	],
 	imports: [
 		CommonModule,
@@ -44,7 +43,12 @@ import {
 		BrowserAnimationsModule,
 		NoopAnimationsModule,
 	],
-  exports: [PlaylistItemComponent, PlaylistComponent, SpotifyComponent],
+	exports: [
+		SpotifyComponent,
+		PlaylistComponent,
+		PlaylistItemComponent,
+		ControlComponent,
+	],
 	schemas: [CUSTOM_ELEMENTS_SCHEMA],
 	providers: [
 		{

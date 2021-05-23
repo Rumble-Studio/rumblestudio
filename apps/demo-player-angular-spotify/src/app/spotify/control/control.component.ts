@@ -4,7 +4,6 @@ import {
 	ElementRef,
 	HostListener,
 	Input,
-	OnInit,
 	ViewChild,
 } from '@angular/core';
 import { PlayerBridgeService } from '../player-bridge.service';
@@ -65,13 +64,13 @@ export class ControlComponent implements AfterViewInit {
 				icon.classList.add(this.additionalClass);
 			}
 			if (this.task === 'play') {
-			  this.bridge.playing.asObservable().subscribe(next => {
-			    if (next){
-            this.changeIcon('pause_circle_outline');
-          } else {
-            this.changeIcon('play_circle_outline');
-          }
-        })
+				this.bridge.playing.asObservable().subscribe((next) => {
+					if (next) {
+						this.changeIcon('pause_circle_outline');
+					} else {
+						this.changeIcon('play_circle_outline');
+					}
+				});
 			}
 		}
 	}

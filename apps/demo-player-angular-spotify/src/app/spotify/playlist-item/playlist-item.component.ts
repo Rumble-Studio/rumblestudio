@@ -3,7 +3,6 @@ import {
 	Component,
 	ElementRef,
 	Input,
-	OnInit,
 	ViewChild,
 } from '@angular/core';
 import { PlayerBridgeService } from '../player-bridge.service';
@@ -63,21 +62,21 @@ export class PlaylistItemComponent implements AfterViewInit {
 	}
 	ngAfterViewInit() {
 		if (this.container) {
-		  this.bridge.playing.asObservable().subscribe(value => {
-		    if(value){
-		      if (this.bridge.index.getValue() === this.index){
-            const icon = this.container.nativeElement.querySelector(
-              'mat-icon'
-            );
-            icon.textContent = 'pause_circle_outline';
-          }
-        } else {
-          const icon = this.container.nativeElement.querySelector(
-            'mat-icon'
-          );
-          icon.textContent = 'play_circle_outline';
-        }
-      })
+			this.bridge.playing.asObservable().subscribe((value) => {
+				if (value) {
+					if (this.bridge.index.getValue() === this.index) {
+						const icon =
+							this.container.nativeElement.querySelector(
+								'mat-icon',
+							);
+						icon.textContent = 'pause_circle_outline';
+					}
+				} else {
+					const icon =
+						this.container.nativeElement.querySelector('mat-icon');
+					icon.textContent = 'play_circle_outline';
+				}
+			});
 		}
 	}
 }

@@ -1,10 +1,4 @@
-import {
-	AfterViewInit,
-	Component,
-	ElementRef,
-	OnInit,
-	ViewChild,
-} from '@angular/core';
+import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import { PlayerBridgeService } from '../player-bridge.service';
 import { Song } from '@rumblestudio/player-service';
 
@@ -20,7 +14,7 @@ export class PlaylistComponent implements AfterViewInit {
 	@ViewChild('header') header: ElementRef<HTMLDivElement> | undefined;
 	@ViewChild('header2') header2: ElementRef<HTMLDivElement> | undefined;
 
-	playlist: Song[] = []
+	playlist: Song[] = [];
 
 	isHome = true;
 
@@ -28,19 +22,19 @@ export class PlaylistComponent implements AfterViewInit {
 
 	ngAfterViewInit() {
 		if (this.header) {
-		  this.bridge.playlist.asObservable().subscribe(playlist => {
-        if (playlist.length>0 && playlist[0].albumCover) {
-          const icon = this.header.nativeElement.querySelector('img');
-          this.image = playlist[0].albumCover;
-          icon.setAttribute('src', this.image);
-          this.playlist = playlist;
-        } else {
-          const icon = this.header.nativeElement.querySelector('img');
-          this.image = this.defaultImage;
-          icon.setAttribute('src', this.image);
-          this.playlist = playlist;
-        }
-      })
+			this.bridge.playlist.asObservable().subscribe((playlist) => {
+				if (playlist.length > 0 && playlist[0].albumCover) {
+					const icon = this.header.nativeElement.querySelector('img');
+					this.image = playlist[0].albumCover;
+					icon.setAttribute('src', this.image);
+					this.playlist = playlist;
+				} else {
+					const icon = this.header.nativeElement.querySelector('img');
+					this.image = this.defaultImage;
+					icon.setAttribute('src', this.image);
+					this.playlist = playlist;
+				}
+			});
 		}
 	}
 }
